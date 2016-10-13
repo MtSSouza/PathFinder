@@ -9,8 +9,9 @@ public class Instantiate : MonoBehaviour {
 		PlayerPrefs.SetInt ("rows", 13);
 		PlayerPrefs.SetInt("columns",6);
 
-		for (int i = 0; i < PlayerPrefs.GetInt("rows"); i++) {
-			for (int j = 0; j < PlayerPrefs.GetInt("columns"); j++){
+        for (int i = 0; i < PlayerPrefs.GetInt("columns"); i++)
+        {
+			for (int j = 0; j < PlayerPrefs.GetInt("rows"); j++){
                GameObject grid =  Instantiate (prefab, new Vector2 (-8.29f + i * 1.2f, 4.39f - j* 1.2f), Quaternion.identity) as GameObject;
 				grid.name = "grid "+ (i.ToString() + j.ToString()).ToString(); 
 			}
