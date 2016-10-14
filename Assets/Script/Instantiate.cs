@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Instantiate : MonoBehaviour {
 
 	public GameObject prefab;
+    private List<GameObject> newPath = new List<GameObject>();
 	// Use this for initialization
 	void Start () {
 		PlayerPrefs.SetInt ("rows", 13);
@@ -13,19 +15,12 @@ public class Instantiate : MonoBehaviour {
         {
 			for (int j = 0; j < PlayerPrefs.GetInt("rows"); j++){
                GameObject grid =  Instantiate (prefab, new Vector2 (-8.29f + i * 1.2f, 4.39f - j* 1.2f), Quaternion.identity) as GameObject;
-				grid.name = "grid "+ (i.ToString() + j.ToString()).ToString(); 
-			}
-		}
-
-	}
-    void OnMouseDown(Collider2D col)
-    {
-        if (col.tag.Equals("prefab"))
-        {
-            Debug.Log("sadfsdfs");
-            prefab.GetComponent<SpriteRenderer>().color = new Vector4(1, 0, 1, 1);
-        }
-    }
+               newPath.Add(grid);
+               grid.name = "grid " + newPath.Count; /*(i.ToString() + j.ToString()).ToString()*/
+                
+			    }
+		    }
+	    }
 
 	// Update is called once per frame
     void Update()
